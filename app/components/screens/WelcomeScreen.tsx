@@ -50,19 +50,40 @@ export default function WelcomeScreen({ onNext }: ScreenProps) {
       color="#FFFAE9"
     >
       {/* Screen content here */}
-      <div className="w-4/5 mx-auto text-center pt-[88px]">
-        <h3 className="text-[#272727]">It Started With</h3>
-        <h1 className="gradient-text text-border mb-[64px]">GO!</h1>
-        <p className="text-[#272727]">TheNew Church <span className="bold">2025</span> Wrapped.</p>
+      <div className="min-h-screen flex flex-col px-[24px]">
+        {/* Header content */}
+        <div className="flex items-center justify-between pt-[22px] pb-[18px]">
+          <button>
+            <img src="/images/arrow.svg" alt="Logo" className="" />
+          </button>
 
-        
-        <div className="">
-          <p>
-            <span className="note text-[#272727]">Let's look back together.</span>
-          </p>
-          <img src="/images/Icon-Black.png" alt="Logo" className="mx-auto h-[24px] w-auto" />
+          <button>
+            <img src="/images/volume.svg" alt="Logo" className="" />
+          </button>
         </div>
+
+        {/* Hero Area*/}
+        <div className="mt-[88px] text-center">
+          <h3 className="text-[#272727]">It Started With</h3>
+          <h1 className="gradient-text text-border">GO!</h1>
+          <p className="text-[#272727] mt-[64px]">TheNew Church <span className="bold">2025</span> Wrapped.</p>
+        </div>
+
+        {/* Button */}
+        <button className="black-button self-center w-[128px] mt-[64px] px-[24px] py-[12px] rounded-full text-white">
+          Let's Go
+        </button>
+
+        {/* Footer */}
+        <div className="mt-auto flex items-center justify-between px-[8px] pb-[48px]">
+          <img src="/images/Icon-Black.png" alt="Logo" className="h-[36px] w-auto" />
+          <p>
+            <span className="text-[#272727] text-[14px]">LET'S LOOK BACK TOGETHER.</span>
+          </p>
+        </div>
+
       </div>
+      
     </Background>
   );
 }

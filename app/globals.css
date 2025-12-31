@@ -114,3 +114,11 @@
   .text-border {
     -webkit-text-stroke: 1.59px #141414;
   }
+
+  .black-button{
+    background-color: #000000 !important;
+  }
+
+  .full-screen{
+    height: 100dvh !important;
+  }
