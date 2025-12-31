@@ -6,6 +6,7 @@ import { ScreenProps } from "../ScreenRenderer";
 import { useFlow } from "../providers/FlowProvider";
 import { useAnalytics } from "../providers/AnalyticsProvider";
 import { ANALYTICS_EVENTS } from "@/app/types";
+import Background from "../ui/Background";
 
 export default function BeforeWeBeginScreen({ goToScreen }: ScreenProps) {
   const { validateUser, isLoading, error, setError, userData, fetchUserData } = useFlow();
@@ -101,60 +102,98 @@ export default function BeforeWeBeginScreen({ goToScreen }: ScreenProps) {
 };
 
   return (
-    <div className="h-screen w-full bg-linear-to-br from-blue-900 via-black to-purple-900 flex items-center justify-center p-6">
-      <div className="text-center text-white max-w-md w-full">
-        {/* Title */}
-        <h1 className="text-3xl font-bold mb-3">Before We Begin</h1>
+    // <div className="">
+    //     <div></div>
         
-        {/* Subtitle */}
-        <p className="text-gray-300 mb-8">
-          Let's find your personalized year in review
-        </p>
+    //     {/* Title */}
+    //     <h3 className="text-3xl font-bold mb-3">Before We Begin</h3>
+        
+    //     {/* Subtitle */}
+    //     <p className="text-gray-300 mb-8">
+    //       Let's find your personalized year in review
+    //     </p>
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Enter your email or phone number"
-              disabled={isLoading}
-              className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:bg-white/15 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-            />
-          </div>
+    //     {/* Form */}
+    //     <form onSubmit={handleSubmit} className="space-y-4">
+    //       <div>
+    //         <input
+    //           type="text"
+    //           value={input}
+    //           onChange={(e) => setInput(e.target.value)}
+    //           placeholder="Enter your email or phone number"
+    //           disabled={isLoading}
+    //           className="w-full px-6 py-4 bg-white/10 border border-white/20 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:bg-white/15 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+    //         />
+    //       </div>
 
-          {/* Error Messages */}
-          {(localError || error) && (
-            <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
-              <p className="text-red-400 text-sm">
-                {localError || error}
-              </p>
+    //       {/* Error Messages */}
+    //       {(localError || error) && (
+    //         <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
+    //           <p className="text-red-400 text-sm">
+    //             {localError || error}
+    //           </p>
+    //         </div>
+    //       )}
+
+    //       {/* Submit Button */}
+    //       <button
+    //         type="submit"
+    //         disabled={isLoading}
+    //         className=""
+    //       >
+    //         {isLoading ? (
+    //           <>
+    //             <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+    //             <span>Finding you...</span>
+    //           </>
+    //         ) : (
+    //           <span>Continue</span>
+    //         )}
+    //       </button>
+    //     </form>
+
+    //     {/* Info Note */}
+    //     <p className="text-gray-500 text-xs mt-6">
+    //       We'll use this to find your personalized stats and memories from this year
+    //     </p>
+    // </div>
+
+    <Background color="#000000">
+      <div className="min-h-screen flex flex-col px-[24px]">
+        <div></div>
+
+        {/* Header */}
+        <div className="mt-[48px] mb-[32px] text-center">
+          <img src="/images/Icon-White.png" alt="Logo" className="mx-auto h-[32px] w-auto mb-[16px]" />
+          <h3 className="mb-[16px] text-[28px]"> Before We Begin... </h3>
+          <p className="text-[#F1F2F6]">Enter your details to see your 2025 with TheNew Church.</p>
+        </div>
+
+        <div className="mt-[10px]">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="gracemay@example.com"
+                disabled={isLoading}
+                className="w-full px-[16px] py-[18px] bg-white/10 border border-white/20 rounded-b-[16px] rounded-t-[16px] text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:bg-white/15 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              />
+              <p className="mt-[18px] text-center"><span className="leading-[24px] tracking-[0.024px] underline">Use phone number instead</span></p>
             </div>
-          )}
+            <button></button>
+          </form>
+        </div>
 
-          {/* Submit Button */}
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="w-full px-8 py-4 bg-purple-600 hover:bg-purple-700 disabled:bg-gray-600 disabled:cursor-not-allowed rounded-full font-bold text-lg transition-colors flex items-center justify-center gap-2"
-          >
-            {isLoading ? (
-              <>
-                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                <span>Finding you...</span>
-              </>
-            ) : (
-              <span>Continue</span>
-            )}
-          </button>
-        </form>
+        {/* Footer */}
+        <div className="mt-auto mx-auto flex flex-col px-[8px] pb-[32px] space-y-[12px]">
+          <p className="mb-[12px]"><span className="note">We'll only use this to personalize your Wrapped.</span></p>
+          <img src="/images/Icon-White.png" alt="Logo" className="mx-auto h-[24px] w-auto" />
+        </div>
 
-        {/* Info Note */}
-        <p className="text-gray-500 text-xs mt-6">
-          We'll use this to find your personalized stats and memories from this year
-        </p>
       </div>
-    </div>
+    </Background>
+
   );
 }

@@ -12,6 +12,22 @@
 
 @font-face {
   font-family: "Manrope";
+  src: url("/fonts/manrope-thin.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("/fonts/manrope-light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
   src: url("/fonts/manrope-regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
@@ -84,19 +100,21 @@
 
   h3 {
     font-family: 'Dela Gothic One' !important;
-    font-size: 24px !important;
+    font-size: 28px !important;
     line-height: 1;
   }
 
   p {
     font-family: 'Manrope' !important;
     font-size: 16px !important;
+    font-weight: 400 !important;
     line-height: 1;
   }
 
   .note {
     font-family: 'Manrope' !important;
     font-size: 10px !important;
+    font-weight: 300 !important;
     line-height: 1;
   }
 
@@ -113,4 +131,12 @@
 
   .text-border {
     -webkit-text-stroke: 1.59px #141414;
+  }
+
+  .black-button{
+    background-color: #000000 !important;
+  }
+
+  .full-screen{
+    height: 100dvh !important;
   }
