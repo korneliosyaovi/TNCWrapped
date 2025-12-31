@@ -70,7 +70,10 @@ export default function WelcomeScreen({ onNext }: ScreenProps) {
         </div>
 
         {/* Button */}
-        <button className="black-button self-center w-[128px] mt-[64px] px-[24px] py-[12px] rounded-full text-white">
+        <button 
+          className="black-button self-center w-[128px] mt-[64px] px-[24px] py-[12px] rounded-full text-white"
+          onClick={handleGetStarted}
+        >
           Let's Go
         </button>
 
