@@ -2,7 +2,7 @@ import {
   UserValidationResponse,
   UserDataResponse,
   AttendanceUpdateResponse,
-} from "@/app/types";
+} from "@/types";
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 

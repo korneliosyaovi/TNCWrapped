@@ -3,7 +3,7 @@ import {
   UserDataResponse,
   AttendanceUpdateRequest,
   AttendanceUpdateResponse,
-} from "@/app/types";
+} from "@/types";
 
 
 // Client should call our server-side proxy; that proxy will contact the external API

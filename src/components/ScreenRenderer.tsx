@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useFlow } from "./providers/FlowProvider";
 
-import { ScreenId } from "@/app/types";
+import { ScreenId } from "@/types";
 
 import { slideFromRight, fadeInUp, staggerContainer } from "./animations/animation";
 

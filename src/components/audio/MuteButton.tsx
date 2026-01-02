@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useAudio } from "../providers/AudioProvider";
 import { useAnalytics } from "../providers/AnalyticsProvider";
-import { ANALYTICS_EVENTS } from "@/app/types";
+import { ANALYTICS_EVENTS } from "@/types";
 import { playSFX } from "./SoundEffects";
 import { MutedIcon, UnmutedIcon } from "./AudioIcons";
 

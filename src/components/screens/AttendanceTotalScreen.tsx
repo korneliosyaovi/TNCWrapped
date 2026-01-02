@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { ScreenProps } from "../ScreenRenderer";
 import { useFlow } from "../providers/FlowProvider";
 import { useAnalytics } from "../providers/AnalyticsProvider";
-import { AnalyticsEvent, ANALYTICS_EVENTS } from "@/app/types";
+import { AnalyticsEvent, ANALYTICS_EVENTS } from "@/types";
 import { useSFX } from "../audio/SoundEffects";
 
 export default function AttendanceTotalScreen({ onNext }: ScreenProps) {

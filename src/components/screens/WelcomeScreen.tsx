@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect } from "react";
+import Image from 'next/image';
 import { motion } from "framer-motion";
 import { ScreenProps } from "../ScreenRenderer";
 import { useAnalytics } from "../providers/AnalyticsProvider";
 import { useAudio } from "../providers/AudioProvider";
 import { useSFX } from "../audio/SoundEffects";
-import { ANALYTICS_EVENTS } from "@/app/types";
+import { ANALYTICS_EVENTS } from "@/types";
 import Background from "../ui/Background";
 import {
   slideFromRight,
@@ -15,7 +16,7 @@ import {
   bounceIn,
   buttonHover,
   buttonTap,
-} from "../animations/animation";
+} from "@/components/animations/animation";
 
 export default function WelcomeScreen({ onNext }: ScreenProps) {
   const { trackEvent } = useAnalytics();
@@ -54,34 +55,69 @@ export default function WelcomeScreen({ onNext }: ScreenProps) {
         {/* Header content */}
         <div className="flex items-center justify-between pt-[22px] pb-[18px]">
           <button>
-            <img src="/images/arrow.svg" alt="Logo" className="" />
+            <Image
+              src="/images/arrow.svg"
+              alt="back arrow icon"
+              width={1000}
+              height={1000}
+              style={{
+                height: "24px",
+                width: "auto",
+                maxWidth: "100%",
+              }}
+            />
           </button>
 
           <button>
-            <img src="/images/volume.svg" alt="Logo" className="" />
+            <Image
+              src="/images/volume.svg"
+              alt="volume icon"
+              width={1000}
+              height={1000}
+              style={{
+                height: "24px",
+                width: "auto",
+                maxWidth: "100%",
+              }}
+            />
           </button>
         </div>
 
         {/* Hero Area*/}
         <div className="mt-[88px] text-center">
           <h3 className="text-[#272727]">It Started With</h3>
-          <h1 className="gradient-text text-border">GO!</h1>
-          <p className="text-[#272727] mt-[64px]">TheNew Church <span className="bold">2025</span> Wrapped.</p>
+          <div className="relative inline-block">
+            <h1 className="header-shadow">GO!</h1>
+            <h1 className="header gradient-text text-border">GO!</h1>
+          </div>
+          <p className="text-[#272727] mt-[48px] leading-[1.5] tracking-[-0.3px]">
+            TheNew Church <span className="font-bold">2025</span> Wrapped.
+          </p>
         </div>
 
         {/* Button */}
         <button 
-          className="black-button self-center w-[128px] mt-[64px] px-[24px] py-[12px] rounded-full text-white"
+          className="black-button self-center mt-[64px] px-[24px] py-[12px] rounded-full text-white"
           onClick={handleGetStarted}
         >
-          Let's Go
+          Let&apos;s Go ➔
         </button>
 
         {/* Footer */}
         <div className="mt-auto flex items-center justify-between px-[8px] pb-[48px]">
-          <img src="/images/Icon-Black.png" alt="Logo" className="h-[36px] w-auto" />
+          <Image
+            src="/images/Icon-Black.png"
+            alt="Logo"
+            width={1000}
+            height={1000}
+            style={{
+              height: "36px",
+              width: "auto",
+              maxWidth: "100%",
+            }}
+          />
           <p>
-            <span className="text-[#272727] text-[14px]">LET'S LOOK BACK TOGETHER.</span>
+            <span className="text-[#272727] text-[14px]">LET&apos;S LOOK BACK TOGETHER.</span>
           </p>
         </div>
 

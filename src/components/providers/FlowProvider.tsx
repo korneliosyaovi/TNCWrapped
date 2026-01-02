@@ -1,9 +1,9 @@
 "use client";
 
 import React, { createContext, useContext, useState, useCallback } from "react";
-import { ScreenId, FlowState, FlowActions, UserData } from "@/app/types";
-import * as api from "@/app/lib/api";
-import { calculatePersona, calculateAttendancePercentage } from "@/app/lib/persona";
+import { ScreenId, FlowState, FlowActions, UserData } from "@/types";
+import * as api from "@/lib/api";
+import { calculatePersona, calculateAttendancePercentage } from "@/lib/persona";
 
 const SCREEN_ORDER: ScreenId[] = [
   "welcome",

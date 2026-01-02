@@ -1,18 +1,19 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
-import AppProviders from "./components/providers/AppProviders";
+import AppProviders from "../components/providers/AppProviders";
 
 export const metadata: Metadata = {
   title: "Mobile Flow App",
   description: "A mobile-only, state-driven experience",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    // Allow users to zoom for accessibility. Do not disable pinch-to-zoom.
-    userScalable: true,
-  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  // Allow users to zoom for accessibility. Do not disable pinch-to-zoom.
+  userScalable: true,
 };
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID;

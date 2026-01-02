@@ -4,7 +4,7 @@ import { useSFX } from "../audio/SoundEffects";
 import { ScreenProps } from "../ScreenRenderer";
 import { useFlow } from "../providers/FlowProvider";
 import { useAnalytics } from "../providers/AnalyticsProvider";
-import { ANALYTICS_EVENTS } from "@/app/types";
+import { ANALYTICS_EVENTS } from "@/types";
 
 export default function StreakScreen({ onNext }: ScreenProps) {
   const { userData } = useFlow();
