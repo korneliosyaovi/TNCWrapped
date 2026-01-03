@@ -13,6 +13,13 @@ import BeforeWeBeginScreen from "./screens/BeforeWeBeginScreen";
 import NotFoundScreen from "./screens/NotFoundScreen";
 import AttendanceTotalScreen from "./screens/AttendanceTotalScreen";
 import StreakScreen from "./screens/StreakScreen";
+import TopMonthIntroScreen from "./screens/TopMonthIntroScreen";
+import TopMonthDetailScreen from "./screens/TopMonthDetailScreen";
+import FeastShofarScreen from "./screens/FeastShofarScreen";
+import OxygenScreen from "./screens/OxygenScreen";
+import NxtConferenceScreen from "./screens/NxtConferenceScreen";
+import FavoriteMomentsScreen from "./screens/FavoriteMomentsScreen";
+import PersonaScreen from "./screens/PersonaScreen";
 
 export interface ScreenProps {
   onNext: () => void;
@@ -53,31 +60,31 @@ export default function ScreenRenderer() {
         )}
         
         {currentScreen === "top-month-intro" && (
-          <PlaceholderScreen key="top-month-intro" name="Top Month Intro" {...screenProps} />
+          <TopMonthIntroScreen key="top-month-intro" {...screenProps} />
         )}
         
         {currentScreen === "top-month-detail" && (
-          <PlaceholderScreen key="top-month-detail" name="Top Month Detail" {...screenProps} />
+          <TopMonthDetailScreen key="top-month-detail" {...screenProps} />
         )}
         
         {currentScreen === "feast-shofar" && (
-          <PlaceholderScreen key="feast-shofar" name="Feast-Shofar" {...screenProps} />
+          <FeastShofarScreen key="feast-shofar" {...screenProps} />
         )}
         
         {currentScreen === "oxygen" && (
-          <PlaceholderScreen key="oxygen" name="Oxygen" {...screenProps} />
+          <OxygenScreen key="oxygen" {...screenProps} />
         )}
         
         {currentScreen === "nxt-conference" && (
-          <PlaceholderScreen key="nxt-conference" name="NXT Conference" {...screenProps} />
+          <NxtConferenceScreen key="nxt-conference" {...screenProps} />
         )}
         
         {currentScreen === "favorite-moments" && (
-          <PlaceholderScreen key="favorite-moments" name="Favorite Moments" {...screenProps} />
+          <FavoriteMomentsScreen key="favorite-moments" {...screenProps} />
         )}
         
         {currentScreen === "persona" && (
-          <PlaceholderScreen key="persona" name="Persona" {...screenProps} />
+          <PersonaScreen key="persona" {...screenProps} />
         )}
 
         {/* Fallback for any unrecognized screen id to avoid empty UI */}
@@ -99,53 +106,5 @@ export default function ScreenRenderer() {
         )}
       </AnimatePresence>
     </div>
-  );
-}
-
-function PlaceholderScreen({ name, onNext, onBack }: ScreenProps & { name: string }) {
-  
-  return (
-    <motion.div
-      variants={slideFromRight}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      className="absolute inset-0 h-screen w-full bg-linear-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center p-6"
-    >
-      <motion.div
-        variants={staggerContainer}
-        initial="initial"
-        animate="animate"
-        className="text-center text-white max-w-md"
-      >
-        <motion.div variants={fadeInUp} className="mb-6 text-6xl">
-          🚧
-        </motion.div>
-        <motion.h1 variants={fadeInUp} className="text-2xl font-bold mb-2">
-          {name}
-        </motion.h1>
-        <motion.p variants={fadeInUp} className="text-gray-400 mb-8 text-sm">
-          This screen will be implemented soon
-        </motion.p>
-        <motion.div variants={fadeInUp} className="flex gap-3 justify-center">
-          <motion.button
-            onClick={onBack}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="px-6 py-3 bg-white/10 hover:bg-white/20 rounded-full font-semibold transition-colors"
-          >
-            ← Back
-          </motion.button>
-          <motion.button
-            onClick={onNext}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-full font-semibold transition-colors"
-          >
-            Next →
-          </motion.button>
-        </motion.div>
-      </motion.div>
-    </motion.div>
   );
 }

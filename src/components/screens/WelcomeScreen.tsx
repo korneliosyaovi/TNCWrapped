@@ -85,13 +85,13 @@ export default function WelcomeScreen({ onNext }: ScreenProps) {
 
         {/* Hero Area*/}
         <div className="mt-[88px] text-center">
-          <h3 className="text-[#272727]">It Started With</h3>
+          <h4 className="text-[#272727]">It Started With</h4>
           <div className="relative inline-block">
             <h1 className="header-shadow">GO!</h1>
-            <h1 className="header gradient-text text-border">GO!</h1>
+            <h1 className="header gradient-text text-border-dark">GO!</h1>
           </div>
           <p className="text-[#272727] mt-[48px] leading-[1.5] tracking-[-0.3px]">
-            TheNew Church <span className="font-bold">2025</span> Wrapped.
+            TheNew Church <strong>2025</strong> Wrapped.
           </p>
         </div>
 

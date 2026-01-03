@@ -1,11 +1,16 @@
 "use client";
 
 import { useEffect } from "react";
+import Image from 'next/image';
 import { ScreenProps } from "../ScreenRenderer";
 import { useFlow } from "../providers/FlowProvider";
 import { useAnalytics } from "../providers/AnalyticsProvider";
 import { AnalyticsEvent, ANALYTICS_EVENTS } from "@/types";
 import { useSFX } from "../audio/SoundEffects";
+import Background from "../ui/Background";
+import { ArrowLeftIcon } from "@/assets/ArrowLeftIcon";
+import { LogoIcon } from "@/assets/LogoIcon";
+import { VolumeIcon } from "@/assets/VolumeIcon";
 
 export default function AttendanceTotalScreen({ onNext }: ScreenProps) {
   const { userData, fetchUserData, isLoading } = useFlow();
@@ -53,35 +58,57 @@ export default function AttendanceTotalScreen({ onNext }: ScreenProps) {
   }
 
   return (
-    <div className="h-screen w-full bg-linear-to-br from-green-900 via-black to-blue-900 flex items-center justify-center p-6">
-      <div className="text-center text-white max-w-md">
-        {/* Small Label */}
-        <p className="text-purple-400 text-sm font-semibold mb-4 uppercase tracking-wider">
-          Your Total
-        </p>
+    <Background
+      color="#141414"
+      image="/images/Black-Background-1.svg"
+    >
+      {/* Screen content here */}
+      <div className="min-h-screen flex flex-col px-[24px]">
+        {/* Header content */}
+        <div className="flex items-center justify-between pt-[22px] pb-[18px]">
+          <button>
+            <ArrowLeftIcon color="#FFFFFF" />
+          </button>
 
-        {/* Big Number */}
-        <div className="mb-6">
-          <div className="text-8xl font-bold mb-2 bg-linear-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-            {userData.totalAttendance || 0}
-          </div>
-          <p className="text-2xl text-gray-300 font-light">
-            times this year
+          <button>
+            <VolumeIcon color="#FFFFFF" />
+          </button>
+        </div>
+
+        {/* Hero Area*/}
+        <div className="mt-[88px] text-center">
+          <Image
+            src="/images/Icon-White.png"
+            alt="Logo"
+            className="mx-auto mb-[8px]"
+            width={1000}
+            height={1000}
+            style={{ height: "32px", width: "auto", maxWidth: "100%" }}
+          />
+          <h4 className="text-[#F1F2F6]">You showed up!</h4>
+          <h1 className="header gradient-text text-border-light">{userData.totalAttendance || 0}</h1>
+          <p className="text-[#F1F2F6] text-[12px] mt-[24px] leading-[1.5] tracking-[-0.3px]">
+            You attended services <strong>{userData.totalAttendance || 0}</strong> times this year.
           </p>
         </div>
 
-        {/* Message */}
-        <p className="text-gray-300 mb-8 leading-relaxed">
-          You showed up {userData.totalAttendance || 0} times this year. Every time you were here, you made a difference.        </p>
-
-        {/* CTA Button */}
-        <button
+        {/* Button */}
+        <button 
+          className="self-center mt-[64px] px-[24px] py-[12px] rounded-full bg-[#FFFFFF] text-[#141414]"
           onClick={handleContinue}
-          className="w-full px-8 py-4 bg-purple-600 hover:bg-purple-700 rounded-full font-bold text-lg transition-colors"
         >
-          Keep Going →
+          Keep Going
         </button>
+
+        {/* Footer */}
+        <div className="mt-auto flex flex-col gap-[12px] items-center px-[8px] pb-[48px] opacity-80">
+          <p>
+            <span className="text-[#FAFAFA] text-[10px]">That&apos;s top tier dedication</span>
+          </p>
+          <LogoIcon color="#FAFAFA" />
+        </div>
       </div>
-    </div>
+      
+    </Background>
   );
 }

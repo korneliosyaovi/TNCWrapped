@@ -1,5 +1,6 @@
 "use client";
 import { useEffect } from "react";
+import Image from "next/image";
 import { useSFX } from "../audio/SoundEffects";
 import { ScreenProps } from "../ScreenRenderer";
 import { useFlow } from "../providers/FlowProvider";
@@ -10,7 +11,7 @@ import { ArrowLeftIcon } from "@/assets/ArrowLeftIcon";
 import { LogoIcon } from "@/assets/LogoIcon";
 import { VolumeIcon } from "@/assets/VolumeIcon";
 
-export default function StreakScreen({ onNext }: ScreenProps) {
+export default function NxtConferenceScreen({ onNext }: ScreenProps) {
   const { userData } = useFlow();
   const { trackEvent } = useAnalytics();
   const sfx = useSFX();
@@ -40,7 +41,6 @@ export default function StreakScreen({ onNext }: ScreenProps) {
   return (
     <Background
       color="#FFFAE9"
-      image="/images/Yellow-Background-1.svg"
     >
       {/* Screen content here */}
       <div className="min-h-screen flex flex-col px-[24px]">
@@ -56,27 +56,48 @@ export default function StreakScreen({ onNext }: ScreenProps) {
         </div>
 
         {/* Hero Area*/}
-        <div className="mt-[88px] text-center">
-          <LogoIcon className="mx-auto mb-[8px]" width="34px" height="34px" color="#141414" />
-          <h4 className="text-[#141414]">On Fire for God ! 🔥</h4>
-          <h1 className="header gradient-text text-border-dark">{userData.longestStreak || 0}</h1>
-          <p className="text-[#141414] text-[12px] mt-[24px] leading-[1.5] tracking-[-0.3px]">
-            Your longest streak was <strong>{userData.longestStreak || 0}</strong> times in a row.
-          </p>
+        <div className="mt-[24px] text-center">
+          <h4 className="text-[#141414]">Were you there?</h4>
+          <div className="border-[1.5px] border-[#141414] rounded-[52px] mt-[24px] p-[12px]">
+            <div className="relative max-w-[320px] max-h-[284px] w-full h-[284px] rounded-[38px] overflow-hidden mx-auto">
+              <Image
+                src="/images/NXTCON.jpg"
+                alt="Logo"
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            <p className="text-[#141414] my-[24px] text-[20px] font-[500]">
+              NXTCON Acts 12
+            </p>
+          </div>
         </div>
 
+        {/* Spacer to push buttons down */}
+        <div className="flex-1" />
+
         {/* Button */}
-        <button 
-          className="self-center mt-[64px] px-[24px] py-[12px] rounded-full bg-[#141414] text-[#FFFFFF]"
-          onClick={handleContinue}
-        >
-          What&apos;s Next?
-        </button>
+        <div className="flex justify-between">
+          <button 
+            className="self-center mt-[64px] px-[42px] py-[16px] rounded-full bg-[#141414] text-[#FFFFFF]"
+            onClick={handleContinue}
+          >
+            Absolutely!
+          </button>
+
+          <button 
+            className="self-center mt-[64px] px-[42px] py-[16px] rounded-full border-2 border-[#141414] text-[#141414]"
+            onClick={handleContinue}
+          >
+            I missed it
+          </button>
+        </div>
 
         {/* Footer */}
-        <div className="mt-auto flex flex-col gap-[12px] items-center px-[8px] pb-[48px] opacity-80">
-          <p>
-            <span className="text-[#141414] text-[10px]">That&apos;s top tier dedication</span>
+        <div className="mt-[12px] flex flex-col gap-[12px] items-center px-[8px] pb-[32px] opacity-80">
+          <p className="mt-[12px]">
+            <span className="text-[#141414] text-[10px]">Big Moments</span>
           </p>
           <LogoIcon color="#141414" />
         </div>

@@ -76,10 +76,10 @@ export default function NotFoundScreen({ goToScreen }: ScreenProps) {
 
         {/* Hero Area*/}
         <div className="mt-[88px] text-center">
-          <h3 className="text-[#272727]">User not found</h3>
+          <h4 className="text-[#272727]">User not found</h4>
           <div className="relative inline-block">
             <h2 className="header-shadow">OOPS!</h2>
-            <h2 className="header gradient-text text-border">OOPS!</h2>
+            <h2 className="header gradient-text text-border-dark">OOPS!</h2>
           </div>
           <p className="text-[#272727] mt-[48px] leading-[1.5] tracking-[-0.3px]">
             We have secured the <strong>ninety-nine</strong>, but the profile you are searching for has wandered off.

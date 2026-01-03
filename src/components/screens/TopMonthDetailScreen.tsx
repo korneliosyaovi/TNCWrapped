@@ -10,7 +10,7 @@ import { ArrowLeftIcon } from "@/assets/ArrowLeftIcon";
 import { LogoIcon } from "@/assets/LogoIcon";
 import { VolumeIcon } from "@/assets/VolumeIcon";
 
-export default function StreakScreen({ onNext }: ScreenProps) {
+export default function TopMonthDetailScreen({ onNext }: ScreenProps) {
   const { userData } = useFlow();
   const { trackEvent } = useAnalytics();
   const sfx = useSFX();
@@ -39,46 +39,46 @@ export default function StreakScreen({ onNext }: ScreenProps) {
 
   return (
     <Background
-      color="#FFFAE9"
-      image="/images/Yellow-Background-1.svg"
+      color="#141414"
+      image="/images/Circle.gif"
     >
       {/* Screen content here */}
       <div className="min-h-screen flex flex-col px-[24px]">
         {/* Header content */}
         <div className="flex items-center justify-between pt-[22px] pb-[18px]">
           <button>
-            <ArrowLeftIcon color="#141414" />
+            <ArrowLeftIcon color="#FFFFFF" />
           </button>
 
           <button>
-            <VolumeIcon color="#141414" />
+            <VolumeIcon color="#FFFFFF" />
           </button>
         </div>
 
         {/* Hero Area*/}
         <div className="mt-[88px] text-center">
-          <LogoIcon className="mx-auto mb-[8px]" width="34px" height="34px" color="#141414" />
-          <h4 className="text-[#141414]">On Fire for God ! 🔥</h4>
-          <h1 className="header gradient-text text-border-dark">{userData.longestStreak || 0}</h1>
-          <p className="text-[#141414] text-[12px] mt-[24px] leading-[1.5] tracking-[-0.3px]">
-            Your longest streak was <strong>{userData.longestStreak || 0}</strong> times in a row.
+          <LogoIcon className="mx-auto mb-[8px]" width="34px" height="34px" color="#FFFFFF" />
+          <h4 className="text-[#FFFFFF]">This Month Hit Different</h4>
+          <h3 className="header gradient-text text-border-light">{userData.highestActivityMonth || ""}</h3>
+          <p className="text-[#FFFFFF] text-[12px] mt-[16px] leading-[1.5] tracking-[-0.3px]">
+            Your Strongest Month was <strong>{userData.highestActivityMonth || ""}</strong>
           </p>
         </div>
 
         {/* Button */}
         <button 
-          className="self-center mt-[64px] px-[24px] py-[12px] rounded-full bg-[#141414] text-[#FFFFFF]"
+          className="self-center mt-[64px] px-[24px] py-[12px] rounded-full bg-[#FFFFFF] text-[#141414]"
           onClick={handleContinue}
         >
-          What&apos;s Next?
+          Continue the Journey
         </button>
 
         {/* Footer */}
         <div className="mt-auto flex flex-col gap-[12px] items-center px-[8px] pb-[48px] opacity-80">
           <p>
-            <span className="text-[#141414] text-[10px]">That&apos;s top tier dedication</span>
+            <span className="text-[#FAFAFA] text-[10px]">Were you there?</span>
           </p>
-          <LogoIcon color="#141414" />
+          <LogoIcon color="#FAFAFA" />
         </div>
       </div>
       

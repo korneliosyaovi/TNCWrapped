@@ -139,14 +139,21 @@ h2.header-shadow {
 
 h3 {
   font-family: 'Dela Gothic One' !important;
+  font-size: 56px !important;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+h4 {
+  font-family: 'Dela Gothic One' !important;
   font-size: 24px !important;
   line-height: 1;
 }
 
 p {
   font-family: 'Manrope' !important;
-  font-size: 16px !important;
-  font-weight: 400 !important;
+  font-size: 16px;
+  font-weight: 400;
   line-height: 1;
 }
 
@@ -168,8 +175,12 @@ p {
   background-clip: text;
 }
 
-.text-border {
+.text-border-dark {
   -webkit-text-stroke: 1.59px #141414;
+}
+
+.text-border-light {
+  -webkit-text-stroke: 1.59px #FFFFFF;
 }
 
 .black-button{

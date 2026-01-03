@@ -86,7 +86,7 @@ export function FlowProvider({ children }: { children: React.ReactNode }) {
         setIsLoading(false);
         return false;
       }
-    } catch (err) {
+    } catch {
       setError("Failed to validate user");
       setIsLoading(false);
       return false;
@@ -144,7 +144,7 @@ export function FlowProvider({ children }: { children: React.ReactNode }) {
         setIsLoading(false);
         return false;
       }
-    } catch (err) {
+    } catch {
       setError("Failed to fetch user data");
       setIsLoading(false);
       return false;
@@ -173,7 +173,7 @@ export function FlowProvider({ children }: { children: React.ReactNode }) {
 
       setIsLoading(false);
       return response.status === "200" && response.log === "TRUE";
-    } catch (err) {
+    } catch {
       setError("Failed to update attendance");
       setIsLoading(false);
       return false;
