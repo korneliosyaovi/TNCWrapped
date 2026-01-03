@@ -19,7 +19,7 @@ export default function MobileGate({ children }: MobileGateProps) {
       const hasTouch =
         "ontouchstart" in window ||
         navigator.maxTouchPoints > 0 ||
-        // @ts-ignore - some browsers use msMaxTouchPoints
+        // @ts-expect-error - some browsers use msMaxTouchPoints
         navigator.msMaxTouchPoints > 0;
 
       // Check 2: Screen size (mobile is typically <= 768px width)

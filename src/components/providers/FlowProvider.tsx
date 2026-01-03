@@ -1,9 +1,9 @@
 "use client";
 
 import React, { createContext, useContext, useState, useCallback } from "react";
-import { ScreenId, FlowState, FlowActions, UserData } from "@/app/types";
-import * as api from "@/app/lib/api";
-import { calculatePersona, calculateAttendancePercentage } from "@/app/lib/persona";
+import { ScreenId, FlowState, FlowActions, UserData } from "@/types";
+import * as api from "@/lib/api";
+import { calculatePersona, calculateAttendancePercentage } from "@/lib/persona";
 
 const SCREEN_ORDER: ScreenId[] = [
   "welcome",
@@ -24,7 +24,7 @@ type FlowContextType = FlowState & FlowActions;
 const FlowContext = createContext<FlowContextType | undefined>(undefined);
 
 export function FlowProvider({ children }: { children: React.ReactNode }) {
-  const [currentScreen, setCurrentScreen] = useState<ScreenId>("welcome");
+  const [currentScreen, setCurrentScreen] = useState<ScreenId>("top-month-detail");
   const [screenHistory, setScreenHistory] = useState<ScreenId[]>(["welcome"]);
   const [userData, setUserData] = useState<UserData>({});
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -86,7 +86,7 @@ export function FlowProvider({ children }: { children: React.ReactNode }) {
         setIsLoading(false);
         return false;
       }
-    } catch (err) {
+    } catch {
       setError("Failed to validate user");
       setIsLoading(false);
       return false;
@@ -144,7 +144,7 @@ export function FlowProvider({ children }: { children: React.ReactNode }) {
         setIsLoading(false);
         return false;
       }
-    } catch (err) {
+    } catch {
       setError("Failed to fetch user data");
       setIsLoading(false);
       return false;
@@ -173,7 +173,7 @@ export function FlowProvider({ children }: { children: React.ReactNode }) {
 
       setIsLoading(false);
       return response.status === "200" && response.log === "TRUE";
-    } catch (err) {
+    } catch {
       setError("Failed to update attendance");
       setIsLoading(false);
       return false;

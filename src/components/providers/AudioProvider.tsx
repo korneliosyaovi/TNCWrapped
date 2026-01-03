@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect, useRef, useCallback } from "react";
 import { Howl } from "howler";
-import { AudioState, AudioActions } from "@/app/types";
+import { AudioState, AudioActions } from "@/types";
 
 // Default playback volume for audio (0 = silent, 1 = full)
 const DEFAULT_PLAYBACK_VOLUME = 0.5;
