@@ -1,11 +1,11 @@
 "use client";
 
-import MobileGate from "./components/MobileGate";
-import ScreenRenderer from "./components/ScreenRenderer";
+import MobileGate from "../components/MobileGate";
+import ScreenRenderer from "../components/ScreenRenderer";
 // import DebugDashboard from "./components/debug/DebugDashboard";
-import AudioManager from "./components/audio/AudioManager";
-import MuteButton from "./components/audio/MuteButton";
-import SoundEffectsProvider from "./components/audio/SoundEffects";
+import AudioManager from "../components/audio/AudioManager";
+import MuteButton from "../components/audio/MuteButton";
+import SoundEffectsProvider from "../components/audio/SoundEffects";
 
 function AppContent() {
   return (

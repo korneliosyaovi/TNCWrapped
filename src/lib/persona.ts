@@ -1,4 +1,4 @@
-import { Persona, PersonaType } from "@/app/types";
+import { Persona, PersonaType } from "@/types";
 
 /**
  * Calculate persona based on attendance percentage

@@ -1,8 +1,8 @@
 "use client";
 
 import React, { createContext, useContext, useEffect } from "react";
-import { AnalyticsEvent } from "@/app/types";
-import { initGtag, trackEvent as gtag_trackEvent, setUserProperties } from "@/app/lib/gtag";
+import { AnalyticsEvent } from "@/types";
+import { initGtag, trackEvent as gtag_trackEvent, setUserProperties } from "@/lib/gtag";
 
 interface AnalyticsContextType {
   trackEvent: (event: AnalyticsEvent) => void;

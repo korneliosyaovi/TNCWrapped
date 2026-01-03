@@ -3,7 +3,7 @@
  * Maps screen IDs to audio file paths
  */
 
-import { ScreenId } from "@/app/types";
+import { ScreenId } from "@/types";
 
 export interface AudioTrack {
   src: string;
