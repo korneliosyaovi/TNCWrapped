@@ -176,7 +176,7 @@ p {
 }
 
 .text-border-dark {
-  -webkit-text-stroke: 1.59px #141414;
+  -webkit-text-stroke: 1.59px #141414 !important;
 }
 
 .text-border-light {

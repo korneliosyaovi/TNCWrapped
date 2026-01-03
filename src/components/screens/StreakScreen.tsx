@@ -56,7 +56,7 @@ export default function StreakScreen({ onNext }: ScreenProps) {
         </div>
 
         {/* Hero Area*/}
-        <div className="mt-[88px] text-center">
+        <div className="mt-[24px] text-center">
           <LogoIcon className="mx-auto mb-[8px]" width="34px" height="34px" color="#141414" />
           <h4 className="text-[#141414]">On Fire for God ! 🔥</h4>
           <h1 className="header gradient-text text-border-dark">{userData.longestStreak || 0}</h1>
@@ -76,7 +76,7 @@ export default function StreakScreen({ onNext }: ScreenProps) {
         {/* Footer */}
         <div className="mt-auto flex flex-col gap-[12px] items-center px-[8px] pb-[48px] opacity-80">
           <p>
-            <span className="text-[#141414] text-[10px]">That&apos;s top tier dedication</span>
+            <span className="text-[#141414] text-[10px]">No gaps. Just presence</span>
           </p>
           <LogoIcon color="#141414" />
         </div>

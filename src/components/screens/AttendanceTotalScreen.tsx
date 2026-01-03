@@ -76,7 +76,7 @@ export default function AttendanceTotalScreen({ onNext }: ScreenProps) {
         </div>
 
         {/* Hero Area*/}
-        <div className="mt-[88px] text-center">
+        <div className="mt-[24px] text-center">
           <Image
             src="/images/Icon-White.png"
             alt="Logo"

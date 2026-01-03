@@ -56,7 +56,7 @@ export default function TopMonthDetailScreen({ onNext }: ScreenProps) {
         </div>
 
         {/* Hero Area*/}
-        <div className="mt-[88px] text-center">
+        <div className="mt-[24px] text-center">
           <LogoIcon className="mx-auto mb-[8px]" width="34px" height="34px" color="#FFFFFF" />
           <h4 className="text-[#FFFFFF]">This Month Hit Different</h4>
           <h3 className="header gradient-text text-border-light">{userData.highestActivityMonth || ""}</h3>

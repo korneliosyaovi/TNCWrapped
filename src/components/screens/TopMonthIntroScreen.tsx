@@ -43,7 +43,7 @@ export default function TopMonthIntroScreen() {
         </div>
 
         {/* Hero Area*/}
-        <div className="mt-[88px] text-center">
+        <div className="mt-[24px] text-center">
           <LogoIcon className="mx-auto mb-[8px]" width="34px" height="34px" color="#FFFFFF" />
           <h4 className="text-[#FFFFFF]">This Month Hit Different</h4>
           
@@ -111,7 +111,7 @@ export default function TopMonthIntroScreen() {
         {/* Footer */}
         <div className="mt-auto flex flex-col gap-[12px] items-center px-[8px] pb-[48px] opacity-80">
           <p>
-            <span className="text-[#FAFAFA] text-[10px]">That&apos;s top tier dedication</span>
+            <span className="text-[#FAFAFA] text-[10px]">Were you there?</span>
           </p>
           <LogoIcon color="#FAFAFA" />
         </div>
