@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import Image from 'next/image';
 import { motion } from "framer-motion";
 import { ScreenProps } from "../ScreenRenderer";
 import { useAnalytics } from "../providers/AnalyticsProvider";
@@ -9,6 +8,8 @@ import { useAudio } from "../providers/AudioProvider";
 import { useSFX } from "../audio/SoundEffects";
 import { ANALYTICS_EVENTS } from "@/types";
 import Background from "../ui/Background";
+import { LogoIcon } from "@/assets/LogoIcon";
+import { VolumeIcon } from "@/assets/VolumeIcon";
 import {
   slideFromRight,
   staggerContainer,
@@ -53,35 +54,9 @@ export default function WelcomeScreen({ onNext }: ScreenProps) {
       {/* Screen content here */}
       <div className="min-h-screen flex flex-col px-[24px]">
         {/* Header content */}
-        <div className="flex items-center justify-between pt-[22px] pb-[18px]">
-          <button>
-            <Image
-              src="/images/arrow.svg"
-              alt="back arrow icon"
-              width={1000}
-              height={1000}
-              style={{
-                height: "24px",
-                width: "auto",
-                maxWidth: "100%",
-              }}
-            />
-          </button>
-
-          <button>
-            <Image
-              src="/images/volume.svg"
-              alt="volume icon"
-              width={1000}
-              height={1000}
-              style={{
-                height: "24px",
-                width: "auto",
-                maxWidth: "100%",
-              }}
-            />
-          </button>
-        </div>
+        <button className="ml-auto mt-[22px] mb-[18px]">
+          <VolumeIcon color="#141414" />
+        </button>
 
         {/* Hero Area*/}
         <div className="mt-[88px] text-center">
@@ -104,20 +79,10 @@ export default function WelcomeScreen({ onNext }: ScreenProps) {
         </button>
 
         {/* Footer */}
-        <div className="mt-auto flex items-center justify-between px-[8px] pb-[48px]">
-          <Image
-            src="/images/Icon-Black.png"
-            alt="Logo"
-            width={1000}
-            height={1000}
-            style={{
-              height: "36px",
-              width: "auto",
-              maxWidth: "100%",
-            }}
-          />
+        <div className="mt-auto flex items-center justify-between px-[8px] pb-[48px] opacity-80">
+          <LogoIcon color="#141414" style={{ height: "36px", width: "auto" }} />
           <p>
-            <span className="text-[#272727] text-[14px]">LET&apos;S LOOK BACK TOGETHER.</span>
+            <span className="text-[#141414] text-[14px]">LET&apos;S LOOK BACK TOGETHER.</span>
           </p>
         </div>
 

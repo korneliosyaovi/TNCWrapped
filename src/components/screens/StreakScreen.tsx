@@ -10,7 +10,7 @@ import { ArrowLeftIcon } from "@/assets/ArrowLeftIcon";
 import { LogoIcon } from "@/assets/LogoIcon";
 import { VolumeIcon } from "@/assets/VolumeIcon";
 
-export default function StreakScreen({ onNext }: ScreenProps) {
+export default function StreakScreen({ onNext, onBack }: ScreenProps) {
   const { userData } = useFlow();
   const { trackEvent } = useAnalytics();
   const sfx = useSFX();
@@ -46,7 +46,7 @@ export default function StreakScreen({ onNext }: ScreenProps) {
       <div className="min-h-screen flex flex-col px-[24px]">
         {/* Header content */}
         <div className="flex items-center justify-between pt-[22px] pb-[18px]">
-          <button>
+          <button onClick={onBack}>
             <ArrowLeftIcon color="#141414" />
           </button>
 

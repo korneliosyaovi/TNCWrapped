@@ -12,7 +12,7 @@ import { ArrowLeftIcon } from "@/assets/ArrowLeftIcon";
 import { LogoIcon } from "@/assets/LogoIcon";
 import { VolumeIcon } from "@/assets/VolumeIcon";
 
-export default function AttendanceTotalScreen({ onNext }: ScreenProps) {
+export default function AttendanceTotalScreen({ onNext, onBack }: ScreenProps) {
   const { userData, fetchUserData, isLoading } = useFlow();
   const { trackEvent } = useAnalytics();
   const sfx = useSFX();
@@ -66,7 +66,7 @@ export default function AttendanceTotalScreen({ onNext }: ScreenProps) {
       <div className="min-h-screen flex flex-col px-[24px]">
         {/* Header content */}
         <div className="flex items-center justify-between pt-[22px] pb-[18px]">
-          <button>
+          <button onClick={onBack}>
             <ArrowLeftIcon color="#FFFFFF" />
           </button>
 
@@ -77,14 +77,7 @@ export default function AttendanceTotalScreen({ onNext }: ScreenProps) {
 
         {/* Hero Area*/}
         <div className="mt-[24px] text-center">
-          <Image
-            src="/images/Icon-White.png"
-            alt="Logo"
-            className="mx-auto mb-[8px]"
-            width={1000}
-            height={1000}
-            style={{ height: "32px", width: "auto", maxWidth: "100%" }}
-          />
+          <LogoIcon color="#FFFFFF" className="mx-auto mb-[8px]" style={{ height: "32px", width: "auto" }} />
           <h4 className="text-[#F1F2F6]">You showed up!</h4>
           <h1 className="header gradient-text text-border-light">{userData.totalAttendance || 0}</h1>
           <p className="text-[#F1F2F6] text-[12px] mt-[24px] leading-[1.5] tracking-[-0.3px]">

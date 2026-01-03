@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const EXTERNAL_API_BASE = "https://api.therootshive.com/V1/events";
+const EXTERNAL_API_BASE = process.env.API_BASE_URL || "https://api.therootshive.com/V1/events";
 
 function buildAuthHeader() {
   const username = process.env.API_USERNAME;
@@ -29,10 +29,10 @@ async function forwardRequest(path: string, init: RequestInit) {
     headers: { "Content-Type": contentType },
   });}
 
-export async function GET(req: NextRequest) {
+export async function GET(req: NextRequest, context: { params: Promise<{ path?: string[] }> }) {
   try {
-    // incoming path: /api/proxy/searchuser -> we want '/searchuser'
-    const pathname = req.nextUrl.pathname.replace("/api/proxy", "") || "/";
+    const { path } = await context.params;
+    const pathname = "/" + (path?.join("/") ?? "");
     const search = req.nextUrl.search || "";
     return forwardRequest(`${pathname}${search}`, { method: "GET" });
   } catch (err: any) {
@@ -40,9 +40,10 @@ export async function GET(req: NextRequest) {
   }
 }
 
-export async function POST(req: NextRequest) {
+export async function POST(req: NextRequest, context: { params: Promise<{ path?: string[] }> }) {
   try {
-    const pathname = req.nextUrl.pathname.replace("/api/proxy", "") || "/";
+    const { path } = await context.params;
+    const pathname = "/" + (path?.join("/") ?? "");
     const body = await req.json().catch(() => null);
     return forwardRequest(pathname, {
       method: "POST",
