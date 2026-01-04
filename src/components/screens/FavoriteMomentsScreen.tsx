@@ -21,14 +21,14 @@ const items = [
 
 export default function FavoriteMomentsScreen({ onNext, onBack }: ScreenProps) {
   const [selected, setSelected] = useState<number[]>([]);
-  const { setFavoriteMoments, setPersona } = useFlow();
+  const { setFavoriteMoments, setPersona, userData } = useFlow();
   const { trackEvent } = useAnalytics();
   const sfx = useSFX();
 
   useEffect(() => {
     trackEvent({
       name: ANALYTICS_EVENTS.SCREEN_VIEWED,
-      params: { screen_name: "favorite-moments" },
+      params: { screen_name: "favorite-moments", id: userData.identity },
     });
   }, [trackEvent]);
 
@@ -61,6 +61,7 @@ export default function FavoriteMomentsScreen({ onNext, onBack }: ScreenProps) {
       params: {
         button_name: "move_on",
         screen: "favorite-moments",
+        id: userData.identity,
         selected_count: selectedMoments.length,
         selected_moments: selectedMoments,
       },

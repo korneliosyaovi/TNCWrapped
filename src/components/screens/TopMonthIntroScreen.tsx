@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useRef } from "react";
 import { useAnalytics } from "../providers/AnalyticsProvider";
 import { ScreenProps } from "../ScreenRenderer";
+import { useFlow } from "../providers/FlowProvider";
 import { ANALYTICS_EVENTS } from "@/types";
 import Background from "../ui/Background";
 import { ArrowLeftIcon } from "@/assets/ArrowLeftIcon";
@@ -9,6 +10,7 @@ import { LogoIcon } from "@/assets/LogoIcon";
 import VolumeButton from "@/components/ui/VolumeButton";
 
 export default function TopMonthIntroScreen({ onNext, onBack }: ScreenProps) {
+  const { userData } = useFlow();
   const { trackEvent } = useAnalytics();
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const lockedRef = useRef(false);
@@ -16,7 +18,7 @@ export default function TopMonthIntroScreen({ onNext, onBack }: ScreenProps) {
   useEffect(() => {
     trackEvent({
       name: ANALYTICS_EVENTS.SCREEN_VIEWED,
-      params: { screen_name: "streak" },
+      params: { screen_name: "top-month-intro", id: userData.identity },
     });
   }, [trackEvent]);
 

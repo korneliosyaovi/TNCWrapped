@@ -20,7 +20,7 @@ export default function PersonaScreen({ onBack }: ScreenProps) {
   useEffect(() => {
     trackEvent({
       name: ANALYTICS_EVENTS.SCREEN_VIEWED,
-      params: { screen_name: "streak" },
+      params: { screen_name: "persona", id: userData.identity },
     });
   }, [trackEvent]);
 

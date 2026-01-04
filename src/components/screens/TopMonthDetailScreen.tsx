@@ -18,7 +18,7 @@ export default function TopMonthDetailScreen({ onNext, onBack }: ScreenProps) {
   useEffect(() => {
     trackEvent({
       name: ANALYTICS_EVENTS.SCREEN_VIEWED,
-      params: { screen_name: "streak" },
+      params: { screen_name: "top-month-detail", id: userData.identity },
     });
   }, [trackEvent]);
 
@@ -29,8 +29,8 @@ export default function TopMonthDetailScreen({ onNext, onBack }: ScreenProps) {
         name: ANALYTICS_EVENTS.BUTTON_CLICKED,
         params: { 
         button_name: "continue", 
-        screen: "streak",
-        longest_streak: userData.longestStreak 
+        screen: "top-month-detail",
+        id: userData.identity
         },
     });
     onNext();

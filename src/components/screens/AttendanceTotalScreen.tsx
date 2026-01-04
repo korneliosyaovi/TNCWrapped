@@ -20,7 +20,7 @@ export default function AttendanceTotalScreen({ onNext, onBack }: ScreenProps) {
   useEffect(() => {
     trackEvent({
       name: ANALYTICS_EVENTS.SCREEN_VIEWED,
-      params: { screen_name: "attendance_total" },
+      params: { screen_name: "attendance_total", id: userData.identity },
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -39,7 +39,7 @@ export default function AttendanceTotalScreen({ onNext, onBack }: ScreenProps) {
         params: { 
         button_name: "keep_going", 
         screen: "attendance_total",
-        total_attendance: userData.totalAttendance 
+        id: userData.identity
         },
     });
     onNext();
