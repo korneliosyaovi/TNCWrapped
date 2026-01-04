@@ -95,12 +95,20 @@ export default function PersonaScreen({ onBack }: ScreenProps) {
             Download
           </button> */}
 
-          <button
+          {/* <button
             className="self-center mt-[64px] px-[42px] py-[16px] w-full rounded-full bg-[#FFFFFF] text-[#141414]"
             onClick={copyCurrentURL}
           >
             Copy
-          </button>
+          </button> */}
+
+          {/* Footer */}
+        <div className="mt-auto flex flex-col gap-[12px] items-center px-[8px] pb-[48px] opacity-80">
+          <p>
+            <span className="text-[#FAFAFA] text-[12px]">https://wrapped.wearethenew.org/</span>
+          </p>
+          <LogoIcon color="#FAFAFA" />
+        </div>
         </div>
       </div>
       
