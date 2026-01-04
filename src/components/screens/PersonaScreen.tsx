@@ -38,6 +38,19 @@ export default function PersonaScreen({ onBack }: ScreenProps) {
     // onNext();
   };
 
+  function copyCurrentURL() {
+    const url = window.location.href;
+    
+    navigator.clipboard.writeText(url)
+      .then(() => {
+        alert('URL copied to clipboard!');
+      })
+      .catch(err => {
+        console.error('Failed to copy URL:', err);
+        alert('Failed to copy URL');
+      });
+  }
+
   const article = userData.persona
   ? /^[AEIOU]/i.test(userData.persona.trim())
     ? "an"
@@ -75,16 +88,16 @@ export default function PersonaScreen({ onBack }: ScreenProps) {
 
         {/* Button */}
         <div className="flex justify-between mb-[32px]">
-          <button 
+          {/* <button 
             className="self-center mt-[64px] px-[42px] py-[16px] min-w-[166px] rounded-full border-2 border-[#FFFFFF] text-[#FFFFFF]"
             onClick={handleContinue}
           >
             Download
-          </button>
+          </button> */}
 
           <button
-            className="self-center mt-[64px] px-[42px] py-[16px] min-w-[166px] rounded-full bg-[#FFFFFF] text-[#141414]"
-            onClick={handleContinue}
+            className="self-center mt-[64px] px-[42px] py-[16px] w-full rounded-full bg-[#FFFFFF] text-[#141414]"
+            onClick={copyCurrentURL}
           >
             Copy
           </button>
