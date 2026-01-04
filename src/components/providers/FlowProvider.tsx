@@ -24,7 +24,7 @@ type FlowContextType = FlowState & FlowActions;
 const FlowContext = createContext<FlowContextType | undefined>(undefined);
 
 export function FlowProvider({ children }: { children: React.ReactNode }) {
-  const [currentScreen, setCurrentScreen] = useState<ScreenId>("persona");
+  const [currentScreen, setCurrentScreen] = useState<ScreenId>("welcome");
   const [screenHistory, setScreenHistory] = useState<ScreenId[]>(["welcome"]);
   const [userData, setUserData] = useState<UserData>({});
   const [isTransitioning, setIsTransitioning] = useState(false);
