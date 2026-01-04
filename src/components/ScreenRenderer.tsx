@@ -37,7 +37,7 @@ export default function ScreenRenderer() {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full">
       <AnimatePresence mode="wait" initial={false}>
         {currentScreen === "welcome" && (
           <WelcomeScreen key="welcome" {...screenProps} />

@@ -1,59 +1,80 @@
-import { Persona, PersonaType } from "@/types";
+import { PersonaType, UserData } from "@/types";
 
 /**
  * Calculate persona based on attendance percentage
  */
-export function calculatePersona(attendancePercentage: number): PersonaType {
-  if (attendancePercentage >= 80) return "consistent-champion";
-  if (attendancePercentage >= 60) return "dedicated-disciple";
-  if (attendancePercentage >= 40) return "growing-believer";
-  if (attendancePercentage >= 20) return "occasional-visitor";
-  return "new-member";
-}
+export function calculatePersona(user: UserData): PersonaType {
+  const attendance = user.totalAttendance ?? 0;
+  const streak = user.longestStreak ?? 0;
+  const attendedFeast = user.didAttendFeast === true;
+  const attendedOxygen = user.didAttendOxygen === true;
+  const attendedNextcon = user.didAttendNxt === true;
+  const topMoments = user.favoriteMoments ?? [];
 
-/**
- * Get persona details for display
- */
-export function getPersonaDetails(type: PersonaType): Persona {
-  const personas: Record<PersonaType, Persona> = {
-    "consistent-champion": {
-      type: "consistent-champion",
-      title: "Consistent Champion",
-      description: "You're a pillar of the community! Your dedication and consistency inspire others to keep showing up.",
-      color: "#FFD700", // Gold
-      emoji: "🏆",
-    },
-    "dedicated-disciple": {
-      type: "dedicated-disciple",
-      title: "Dedicated Disciple",
-      description: "Your commitment shines through! You're steadily growing and making your presence felt.",
-      color: "#9333EA", // Purple
-      emoji: "⭐",
-    },
-    "growing-believer": {
-      type: "growing-believer",
-      title: "Growing Believer",
-      description: "You're on a journey of growth! Every step you take brings you closer to your spiritual goals.",
-      color: "#3B82F6", // Blue
-      emoji: "🌱",
-    },
-    "occasional-visitor": {
-      type: "occasional-visitor",
-      title: "Occasional Visitor",
-      description: "You're finding your rhythm! We're excited to see you discover your place in the community.",
-      color: "#10B981", // Green
-      emoji: "🚶",
-    },
-    "new-member": {
-      type: "new-member",
-      title: "New Member",
-      description: "Welcome to the family! Every great journey starts with a single step, and you've taken yours.",
-      color: "#F59E0B", // Amber
-      emoji: "✨",
-    },
-  };
+  const hasButterflies = topMoments.includes("Butterflies");
+  const hasWhirlwind = topMoments.includes("Whirlwind of Favor");
+  const has21DaysFaith = topMoments.includes("21 Days of Faith");
+  const hasPANGS = topMoments.includes("PANGS");
+  const hasAlagbara = topMoments.includes("Alagbara Release");
 
-  return personas[type];
+  const prayerFocused = hasWhirlwind || has21DaysFaith;
+  const worshipFocused = hasPANGS || hasButterflies;
+  const teachingFocused = attendedOxygen;
+  const influenceFocused = attendedNextcon;
+
+  // 1. Noah — Faithful Anchor
+  if (attendance >= 24 && streak >= 15 && attendedFeast) {
+    return "Noah";
+  }
+
+  // 2. Anna the Prophetess — Watchful Intercessor
+  if (streak >= 14 && prayerFocused) {
+    return "Anna";
+  }
+
+  // 3. Elisha — Hungry Disciple
+  if (teachingFocused && attendance >= 15 && streak >= 7) {
+    return "Elisha";
+  }
+
+  // 4. Esther — Cultural Voice
+  if (influenceFocused && hasAlagbara) {
+    return "Esther";
+  }
+
+  // 5. Gideon — Emerging Leader
+  if (influenceFocused && attendance >= 12) {
+    return "Gideon";
+  }
+
+  // 6. Mary of Bethany — Intimate Worshipper
+  if (worshipFocused && attendance >= 10) {
+    return "Mary";
+  }
+
+  // 7. Mary Magdalene — Transformed Lover
+  if (hasButterflies && hasWhirlwind && streak < 7) {
+    return "Mary Magdalene";
+  }
+
+  // 8. Martha — Faithful Builder
+  if (attendance >= 20 && attendedFeast && topMoments.length <= 1) {
+    return "Martha";
+  }
+
+  // 9. Joseph — Steady Guardian
+  if (
+    attendance >= 15 &&
+    streak >= 10 &&
+    !prayerFocused &&
+    !worshipFocused &&
+    !influenceFocused
+  ) {
+    return "Joseph";
+  }
+
+  // 10. Nicodemus — Seeker (Fallback)
+  return "Nicodemus";
 }
 
 /**

@@ -91,19 +91,29 @@ export interface UserData {
 
 // TO-DO: update placeholder persona types and details
 export type PersonaType =
-  | "consistent-champion"
-  | "dedicated-disciple"
-  | "growing-believer"
-  | "occasional-visitor"
-  | "new-member";
+  | "Noah"
+  | "Anna"
+  | "Elisha"
+  | "Esther"
+  | "Gideon"
+  | "Mary"
+  | "Mary Magdalene"
+  | "Martha"
+  | "Joseph"
+  | "Nicodemus";
 
-export interface Persona {
-  type: PersonaType;
-  title: string;
-  description: string;
-  color: string;
-  emoji: string;
-}
+export const personaImageMap: Record<PersonaType, string> = {
+  Noah: "/images/avatars/Noah.png",
+  "Anna": "/images/avatars/Anna.png",
+  Elisha: "/images/avatars/Elisha.png",
+  Esther: "/images/avatars/Esther.png",
+  Gideon: "/images/avatars/Gideon.png",
+  "Mary": "/images/avatars/Mary.png",
+  "Mary Magdalene": "/images/avatars/MaryMagdalene.png",
+  Martha: "/images/avatars/Martha.png",
+  Joseph: "/images/avatars/Joseph.png",
+  Nicodemus: "/images/avatars/Nicodemus.png",
+};
 
 // Flow context state
 export interface FlowState {
@@ -124,6 +134,7 @@ export interface FlowActions {
   updateAttendance: () => Promise<boolean>;
   setEventAttendance: (event: 'feast' | 'oxygen' | 'nxt', attended: boolean) => void;
   setFavoriteMoments: (moments: string[]) => void;
+  setPersona: () => void;
   resetFlow: () => void;
   setLoading?: (loading: boolean) => void;
   setError: (error: string | null) => void;
