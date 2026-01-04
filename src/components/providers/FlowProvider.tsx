@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useCallback } from "react";
+import React, { createContext, useContext, useState, useCallback, useEffect } from "react";
 import { ScreenId, FlowState, FlowActions, UserData } from "@/types";
 import * as api from "@/lib/api";
 import { calculatePersona, calculateAttendancePercentage } from "@/lib/persona";
@@ -30,6 +30,32 @@ export function FlowProvider({ children }: { children: React.ReactNode }) {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const LOCAL_STRORAGE_KEY = 'flowData';
+
+  // Sync data with localStorage
+  useEffect(() => {
+    const savedData = localStorage.getItem(LOCAL_STRORAGE_KEY);
+    if (savedData) {
+      const { currentScreen, screenHistory, userData } = JSON.parse(savedData);
+      // Use setTimeout to ensure the state is updated asynchronously
+      setTimeout(() => {
+        setCurrentScreen(currentScreen);
+        setScreenHistory(screenHistory);
+        setUserData(userData);
+      }, 0);
+    }
+  }, []);
+
+  // Save data to localStorage on change
+  useEffect(() => {
+    const flowData = {
+      currentScreen,
+      screenHistory,
+      userData,
+    };
+    localStorage.setItem(LOCAL_STRORAGE_KEY, JSON.stringify(flowData));
+  }, [currentScreen, screenHistory, userData]);
 
   // Navigation functions
   const goToScreen = useCallback((screenId: ScreenId) => {
@@ -123,9 +149,6 @@ export function FlowProvider({ children }: { children: React.ReactNode }) {
           totalPossible
         );
 
-        // Calculate persona
-        const persona = calculatePersona(percentage);
-
         updateUserData({
           identity,
           totalAttendance: TOTAL_ATTENDANCE,
@@ -134,7 +157,6 @@ export function FlowProvider({ children }: { children: React.ReactNode }) {
           highestActivityMonth: monthFormatted,
           highestActivityMonthCount: HIGHEST_ACTIVITY_MONTH.count,
           attendancePercentage: percentage,
-          persona,
         });
 
         setIsLoading(false);
@@ -196,6 +218,11 @@ export function FlowProvider({ children }: { children: React.ReactNode }) {
     updateUserData({ favoriteMoments: moments });
   }, [updateUserData]);
 
+  const setPersona = useCallback(() => {
+    const persona = calculatePersona(userData);
+    updateUserData({ persona });
+  }, [userData, updateUserData]);
+
   const resetFlow = useCallback(() => {
     setCurrentScreen("welcome");
     setScreenHistory(["welcome"]);
@@ -203,6 +230,7 @@ export function FlowProvider({ children }: { children: React.ReactNode }) {
     setIsTransitioning(false);
     setIsLoading(false);
     setError(null);
+    localStorage.removeItem(LOCAL_STRORAGE_KEY);
   }, []);
 
   const value: FlowContextType = {
@@ -221,6 +249,7 @@ export function FlowProvider({ children }: { children: React.ReactNode }) {
     updateAttendance,
     setEventAttendance,
     setFavoriteMoments,
+    setPersona,
     resetFlow,
     setLoading: setIsLoading,
     setError,

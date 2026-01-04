@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import Image from 'next/image';
 import { ScreenProps } from "../ScreenRenderer";
 import { useFlow } from "../providers/FlowProvider";
 import { useAnalytics } from "../providers/AnalyticsProvider";
@@ -10,7 +9,7 @@ import { useSFX } from "../audio/SoundEffects";
 import Background from "../ui/Background";
 import { ArrowLeftIcon } from "@/assets/ArrowLeftIcon";
 import { LogoIcon } from "@/assets/LogoIcon";
-import { VolumeIcon } from "@/assets/VolumeIcon";
+import VolumeButton from "@/components/ui/VolumeButton";
 
 export default function AttendanceTotalScreen({ onNext, onBack }: ScreenProps) {
   const { userData, fetchUserData, isLoading } = useFlow();
@@ -70,9 +69,7 @@ export default function AttendanceTotalScreen({ onNext, onBack }: ScreenProps) {
             <ArrowLeftIcon color="#FFFFFF" />
           </button>
 
-          <button>
-            <VolumeIcon color="#FFFFFF" />
-          </button>
+          <VolumeButton color="#FFFFFF" />
         </div>
 
         {/* Hero Area*/}

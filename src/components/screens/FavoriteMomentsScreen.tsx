@@ -9,7 +9,7 @@ import { ANALYTICS_EVENTS } from "@/types";
 import Background from "../ui/Background";
 import { ArrowLeftIcon } from "@/assets/ArrowLeftIcon";
 import { LogoIcon } from "@/assets/LogoIcon";
-import { VolumeIcon } from "@/assets/VolumeIcon";
+import VolumeButton from "@/components/ui/VolumeButton";
 
 const items = [
   { id: 1, image: "/images/Butterflies-V.webp", text: "Butterflies V - Glass House" },
@@ -21,7 +21,7 @@ const items = [
 
 export default function FavoriteMomentsScreen({ onNext, onBack }: ScreenProps) {
   const [selected, setSelected] = useState<number[]>([]);
-  const { setFavoriteMoments } = useFlow();
+  const { setFavoriteMoments, setPersona } = useFlow();
   const { trackEvent } = useAnalytics();
   const sfx = useSFX();
 
@@ -54,6 +54,7 @@ export default function FavoriteMomentsScreen({ onNext, onBack }: ScreenProps) {
       .map((item) => item.text);
 
     setFavoriteMoments(selectedMoments);
+    setPersona();
 
     trackEvent({
       name: ANALYTICS_EVENTS.BUTTON_CLICKED,
@@ -76,9 +77,8 @@ export default function FavoriteMomentsScreen({ onNext, onBack }: ScreenProps) {
           <button onClick={onBack}>
             <ArrowLeftIcon color="#141414" />
           </button>
-          <button>
-            <VolumeIcon color="#141414" />
-          </button>
+          
+          <VolumeButton color="#141414" />
         </div>
 
         <div className="mt-[24px] text-center">
