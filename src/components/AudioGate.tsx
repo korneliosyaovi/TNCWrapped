@@ -53,7 +53,7 @@ export default function AudioGate({ children }: { children: ReactNode }) {
     <AudioContext.Provider value={{ muted, toggleMute }}>
       <audio
         ref={audioRef}
-        src="/audio/sample.mp3"
+        src="/audio/Alagbara.mp3"
         loop
         autoPlay
         muted={muted}

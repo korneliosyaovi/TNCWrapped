@@ -31,11 +31,11 @@ export function FlowProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const LOCAL_STRORAGE_KEY = 'flowData';
+  const PERSISTENT_STATE_KEY = 'flowData';
 
-  // Sync data with localStorage
+  // Sync data with persistent state
   useEffect(() => {
-    const savedData = localStorage.getItem(LOCAL_STRORAGE_KEY);
+    const savedData = sessionStorage.getItem(PERSISTENT_STATE_KEY);
     if (savedData) {
       const { currentScreen, screenHistory, userData } = JSON.parse(savedData);
       // Use setTimeout to ensure the state is updated asynchronously
@@ -47,14 +47,14 @@ export function FlowProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  // Save data to localStorage on change
+  // Save data to peristent state on change
   useEffect(() => {
     const flowData = {
       currentScreen,
       screenHistory,
       userData,
     };
-    localStorage.setItem(LOCAL_STRORAGE_KEY, JSON.stringify(flowData));
+    sessionStorage.setItem(PERSISTENT_STATE_KEY, JSON.stringify(flowData));
   }, [currentScreen, screenHistory, userData]);
 
   // Navigation functions
@@ -230,7 +230,7 @@ export function FlowProvider({ children }: { children: React.ReactNode }) {
     setIsTransitioning(false);
     setIsLoading(false);
     setError(null);
-    localStorage.removeItem(LOCAL_STRORAGE_KEY);
+    sessionStorage.removeItem(PERSISTENT_STATE_KEY);
   }, []);
 
   const value: FlowContextType = {
