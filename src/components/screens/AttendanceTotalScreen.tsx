@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import Image from 'next/image';
 import { ScreenProps } from "../ScreenRenderer";
 import { useFlow } from "../providers/FlowProvider";
 import { useAnalytics } from "../providers/AnalyticsProvider";
@@ -10,10 +9,10 @@ import { useSFX } from "../audio/SoundEffects";
 import Background from "../ui/Background";
 import { ArrowLeftIcon } from "@/assets/ArrowLeftIcon";
 import { LogoIcon } from "@/assets/LogoIcon";
-import { VolumeIcon } from "@/assets/VolumeIcon";
+import VolumeButton from "@/components/ui/VolumeButton";
 
 export default function AttendanceTotalScreen({ onNext, onBack }: ScreenProps) {
-  const { userData, fetchUserData, isLoading } = useFlow();
+  const { userData, fetchUserData } = useFlow();
   const { trackEvent } = useAnalytics();
   const sfx = useSFX();
 
@@ -46,17 +45,6 @@ export default function AttendanceTotalScreen({ onNext, onBack }: ScreenProps) {
     onNext();
     };
 
-  if (isLoading) {
-    return (
-      <div className="h-screen w-full bg-black flex items-center justify-center">
-        <div className="text-center text-white">
-          <div className="w-16 h-16 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <p className="text-gray-400">Loading your stats...</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <Background
       color="#141414"
@@ -70,9 +58,7 @@ export default function AttendanceTotalScreen({ onNext, onBack }: ScreenProps) {
             <ArrowLeftIcon color="#FFFFFF" />
           </button>
 
-          <button>
-            <VolumeIcon color="#FFFFFF" />
-          </button>
+          <VolumeButton color="#FFFFFF" />
         </div>
 
         {/* Hero Area*/}

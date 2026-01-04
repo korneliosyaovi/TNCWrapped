@@ -9,7 +9,7 @@ import { useSFX } from "../audio/SoundEffects";
 import { ANALYTICS_EVENTS } from "@/types";
 import Background from "../ui/Background";
 import { LogoIcon } from "@/assets/LogoIcon";
-import { VolumeIcon } from "@/assets/VolumeIcon";
+import VolumeButton from "@/components/ui/VolumeButton";
 import {
   slideFromRight,
   staggerContainer,
@@ -54,9 +54,7 @@ export default function WelcomeScreen({ onNext }: ScreenProps) {
       {/* Screen content here */}
       <div className="min-h-screen flex flex-col px-[24px] z-10">
         {/* Header content */}
-        <button className="ml-auto mt-[22px] mb-[18px]">
-          <VolumeIcon color="#141414" />
-        </button>
+        <VolumeButton className="ml-auto mt-[22px] mb-[18px]" color="#141414" />
 
         {/* Hero Area*/}
         <div className="mt-[88px] text-center">

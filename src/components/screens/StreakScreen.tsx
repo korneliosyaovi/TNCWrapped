@@ -8,7 +8,7 @@ import { ANALYTICS_EVENTS } from "@/types";
 import Background from "../ui/Background";
 import { ArrowLeftIcon } from "@/assets/ArrowLeftIcon";
 import { LogoIcon } from "@/assets/LogoIcon";
-import { VolumeIcon } from "@/assets/VolumeIcon";
+import VolumeButton from "@/components/ui/VolumeButton";
 
 export default function StreakScreen({ onNext, onBack }: ScreenProps) {
   const { userData } = useFlow();
@@ -50,9 +50,7 @@ export default function StreakScreen({ onNext, onBack }: ScreenProps) {
             <ArrowLeftIcon color="#141414" />
           </button>
 
-          <button>
-            <VolumeIcon color="#141414" />
-          </button>
+          <VolumeButton color="#141414" />
         </div>
 
         {/* Hero Area*/}
