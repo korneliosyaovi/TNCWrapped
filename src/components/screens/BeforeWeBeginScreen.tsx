@@ -141,7 +141,7 @@ export default function BeforeWeBeginScreen({ goToScreen }: ScreenProps) {
 
   return (
     <Background color="#141414">
-      <div className="min-h-screen flex flex-col px-[24px]">
+      <div className="min-h-screen flex flex-col px-[24px] z-10">
         <div className="mt-[48px] mb-[32px] text-center">
           <LogoIcon color="#FFFFFF" className="mx-auto mb-[16px]" style={{ height: "32px", width: "auto" }} />
           <h4 className="mb-[16px] text-[28px]">Before We Begin...</h4>
@@ -270,7 +270,7 @@ export default function BeforeWeBeginScreen({ goToScreen }: ScreenProps) {
 
         <div className="mx-auto flex flex-col px-[8px] pb-[32px] space-y-[12px] opacity-80">
           <p className="mb-[12px]">
-            <span className="note text-[#FAFAFA]">
+            <span className="note text-[#FAFAFA] text-[12px]">
               We&apos;ll only use this to personalize your Wrapped.
             </span>
           </p>

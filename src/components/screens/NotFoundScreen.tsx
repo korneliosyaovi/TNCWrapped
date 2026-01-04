@@ -45,7 +45,7 @@ export default function NotFoundScreen() {
       color="#FFFAE9"
     >
       {/* Screen content here */}
-      <div className="min-h-screen flex flex-col px-[24px]">
+      <div className="min-h-screen flex flex-col px-[24px] z-10">
         {/* Hero Area*/}
         <div className="mt-[88px] text-center">
           <h4 className="text-[#272727]">User not found</h4>
@@ -63,7 +63,7 @@ export default function NotFoundScreen() {
           className="black-button self-center mt-[64px] px-[24px] py-[12px] rounded-full text-white"
           onClick={handleJoinNow}
         >
-          Join the New
+          Join The New
         </button>
 
         {/* Footer */}

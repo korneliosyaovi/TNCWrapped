@@ -71,7 +71,7 @@ export default function FavoriteMomentsScreen({ onNext, onBack }: ScreenProps) {
 
   return (
     <Background color="#FFFAE9">
-      <div className="min-h-screen flex flex-col px-[24px]">
+      <div className="min-h-screen flex flex-col px-[24px] z-10">
         <div className="flex items-center justify-between pt-[22px] pb-[18px]">
           <button onClick={onBack}>
             <ArrowLeftIcon color="#141414" />
@@ -137,7 +137,7 @@ export default function FavoriteMomentsScreen({ onNext, onBack }: ScreenProps) {
         </button>
 
         <div className="mt-[12px] flex flex-col gap-[12px] items-center px-[8px] pb-[32px] opacity-80">
-          <p className="mt-[12px] text-[#141414] text-[10px]">
+          <p className="mt-[12px] text-[#141414] text-[12px]">
             Moments That Mattered
           </p>
           <LogoIcon color="#141414" />

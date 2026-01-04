@@ -43,7 +43,7 @@ export default function PersonaScreen({ onNext, onBack }: ScreenProps) {
       color="#141414"
       image="/images/Confetti.gif"
     >
-      <div className="relative w-full h-0">
+      <div className="relative w-full h-0 z-10">
         <div className="absolute top-0 left-1/2 -translate-x-1/2">
           <div className="absolute -top-[58px] w-[130px] h-[130px] rounded-full border-[2px] border-[#FFFFFF] bg-[#000000]" />
           <div className="absolute -top-[36px] w-[130px] h-[130px] rounded-full border-[2px] border-[#FFFFFF] bg-[#000000]" />
@@ -59,7 +59,7 @@ export default function PersonaScreen({ onNext, onBack }: ScreenProps) {
       </div>
 
       {/* Screen content here */}
-      <div className="min-h-screen flex flex-col px-[24px]">
+      <div className="min-h-screen flex flex-col px-[24px] z-10">
         {/* Header content */}
         <div className="flex items-center justify-between pt-[22px] pb-[18px]">
           <button onClick={onBack}>
@@ -81,7 +81,7 @@ export default function PersonaScreen({ onNext, onBack }: ScreenProps) {
           <h3 className="header gradient-text text-border-light">{userData.persona || "Nicodemus"}</h3>
           <p className="text-[#F1F2F6] text-[12px] mt-[16px] leading-[1.5] tracking-[-0.3px]">
             You attended <strong>{userData.totalAttendance || 0} Services</strong>. Your strongest month was <strong>{userData.highestActivityMonth || ""}</strong>.
-            You dominated <strong>Gethsemane, {userData.longestStreak || 0} times</strong>. Every service you attended wasn&apos;t just a check-in. It was a step in your walk with God.
+            Your longest streak was <strong>{userData.longestStreak || 0} times</strong> in 2025. Every service you attended wasn&apos;t just a check-in. It was a step in your walk with God.
           </p>
         </div>
 

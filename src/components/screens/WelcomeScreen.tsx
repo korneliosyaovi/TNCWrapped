@@ -52,7 +52,7 @@ export default function WelcomeScreen({ onNext }: ScreenProps) {
       color="#FFFAE9"
     >
       {/* Screen content here */}
-      <div className="min-h-screen flex flex-col px-[24px]">
+      <div className="min-h-screen flex flex-col px-[24px] z-10">
         {/* Header content */}
         <button className="ml-auto mt-[22px] mb-[18px]">
           <VolumeIcon color="#141414" />
