@@ -19,16 +19,16 @@ const items = [
   { id: 5, image: "/images/Alagbara.jpg", text: "Alagbara Release" },
 ];
 
-export default function FavoriteMomentsScreen({ onNext }: ScreenProps) {
+export default function FavoriteMomentsScreen({ onNext, onBack }: ScreenProps) {
   const [selected, setSelected] = useState<number[]>([]);
-  const { userData } = useFlow();
+  const { setFavoriteMoments } = useFlow();
   const { trackEvent } = useAnalytics();
   const sfx = useSFX();
 
   useEffect(() => {
     trackEvent({
       name: ANALYTICS_EVENTS.SCREEN_VIEWED,
-      params: { screen_name: "streak" },
+      params: { screen_name: "favorite-moments" },
     });
   }, [trackEvent]);
 
@@ -45,16 +45,26 @@ export default function FavoriteMomentsScreen({ onNext }: ScreenProps) {
   };
 
   const handleContinue = () => {
+    if (selected.length === 0) return;
+
     sfx.play("whoosh");
-    
+
+    const selectedMoments = items
+      .filter((item) => selected.includes(item.id))
+      .map((item) => item.text);
+
+    setFavoriteMoments(selectedMoments);
+
     trackEvent({
-        name: ANALYTICS_EVENTS.BUTTON_CLICKED,
-        params: { 
-        button_name: "continue", 
-        screen: "streak",
-        longest_streak: userData.longestStreak 
-        },
+      name: ANALYTICS_EVENTS.BUTTON_CLICKED,
+      params: {
+        button_name: "move_on",
+        screen: "favorite-moments",
+        selected_count: selectedMoments.length,
+        selected_moments: selectedMoments,
+      },
     });
+
     onNext();
   };
 
@@ -63,7 +73,7 @@ export default function FavoriteMomentsScreen({ onNext }: ScreenProps) {
     <Background color="#FFFAE9">
       <div className="min-h-screen flex flex-col px-[24px]">
         <div className="flex items-center justify-between pt-[22px] pb-[18px]">
-          <button>
+          <button onClick={onBack}>
             <ArrowLeftIcon color="#141414" />
           </button>
           <button>

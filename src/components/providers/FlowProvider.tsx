@@ -24,7 +24,7 @@ type FlowContextType = FlowState & FlowActions;
 const FlowContext = createContext<FlowContextType | undefined>(undefined);
 
 export function FlowProvider({ children }: { children: React.ReactNode }) {
-  const [currentScreen, setCurrentScreen] = useState<ScreenId>("top-month-detail");
+  const [currentScreen, setCurrentScreen] = useState<ScreenId>("welcome");
   const [screenHistory, setScreenHistory] = useState<ScreenId[]>(["welcome"]);
   const [userData, setUserData] = useState<UserData>({});
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -238,7 +238,7 @@ export function useFlow() {
 }
 
 /**
- * Format month string from "2025-12" to "December 2025"
+ * Format month string from "2025-12" to "December"
  */
 function formatMonthString(monthString: string): string {
   if (typeof monthString !== "string") {
@@ -247,20 +247,19 @@ function formatMonthString(monthString: string): string {
 
   const parts = monthString.split("-");
   if (parts.length !== 2) {
-    return monthString || "Invalid date";
+    return "Invalid date";
   }
 
-  const [yearStr, monthStr] = parts;
+  const [, monthStr] = parts;
+
   // Basic numeric validation
-  if (!/^-?\d+$/.test(yearStr) || !/^-?\d+$/.test(monthStr)) {
-    return monthString;
+  if (!/^\d+$/.test(monthStr)) {
+    return "Invalid date";
   }
 
-  const year = parseInt(yearStr, 10);
   const month = parseInt(monthStr, 10);
-
-  if (Number.isNaN(year) || Number.isNaN(month) || month < 1 || month > 12) {
-    return monthString;
+  if (Number.isNaN(month) || month < 1 || month > 12) {
+    return "Invalid date";
   }
 
   const monthNames = [
@@ -268,5 +267,5 @@ function formatMonthString(monthString: string): string {
     "July", "August", "September", "October", "November", "December"
   ];
 
-  return `${monthNames[month - 1]} ${year}`;
+  return monthNames[month - 1];
 }

@@ -11,7 +11,7 @@ import { ArrowLeftIcon } from "@/assets/ArrowLeftIcon";
 import { LogoIcon } from "@/assets/LogoIcon";
 import { VolumeIcon } from "@/assets/VolumeIcon";
 
-export default function PersonaScreen({ onNext }: ScreenProps) {
+export default function PersonaScreen({ onNext, onBack }: ScreenProps) {
   const { userData } = useFlow();
   const { trackEvent } = useAnalytics();
   const sfx = useSFX();
@@ -62,7 +62,7 @@ export default function PersonaScreen({ onNext }: ScreenProps) {
       <div className="min-h-screen flex flex-col px-[24px]">
         {/* Header content */}
         <div className="flex items-center justify-between pt-[22px] pb-[18px]">
-          <button>
+          <button onClick={onBack}>
             <ArrowLeftIcon color="#FFFFFF" />
           </button>
 
@@ -78,9 +78,9 @@ export default function PersonaScreen({ onNext }: ScreenProps) {
         <div className="mt-[88px] text-center">
           <LogoIcon className="mx-auto mb-[8px]" width="34px" height="34px" color="#FFFFFF" />
           <h4 className="text-[#FFFFFF]">You are a</h4>
-          <h3 className="header gradient-text text-border-light">{userData.highestActivityMonth || "Nicodemus"}</h3>
+          <h3 className="header gradient-text text-border-light">{userData.persona || "Nicodemus"}</h3>
           <p className="text-[#F1F2F6] text-[12px] mt-[16px] leading-[1.5] tracking-[-0.3px]">
-            You attended <strong>{userData.totalAttendance || 0} Services</strong>. Your strongest month was <strong>{userData.highestActivityMonth || ""}</strong>
+            You attended <strong>{userData.totalAttendance || 0} Services</strong>. Your strongest month was <strong>{userData.highestActivityMonth || ""}</strong>.
             You dominated <strong>Gethsemane, {userData.longestStreak || 0} times</strong>. Every service you attended wasn&apos;t just a check-in. It was a step in your walk with God.
           </p>
         </div>

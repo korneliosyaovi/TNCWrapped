@@ -1,14 +1,17 @@
 "use client";
-import { useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useAnalytics } from "../providers/AnalyticsProvider";
+import { ScreenProps } from "../ScreenRenderer";
 import { ANALYTICS_EVENTS } from "@/types";
 import Background from "../ui/Background";
 import { ArrowLeftIcon } from "@/assets/ArrowLeftIcon";
 import { LogoIcon } from "@/assets/LogoIcon";
 import { VolumeIcon } from "@/assets/VolumeIcon";
 
-export default function TopMonthIntroScreen() {
+export default function TopMonthIntroScreen({ onNext, onBack }: ScreenProps) {
   const { trackEvent } = useAnalytics();
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const lockedRef = useRef(false);
 
   useEffect(() => {
     trackEvent({
@@ -16,6 +19,25 @@ export default function TopMonthIntroScreen() {
       params: { screen_name: "streak" },
     });
   }, [trackEvent]);
+
+  useEffect(() => {
+    timeoutRef.current = setTimeout(() => {
+      if (!lockedRef.current) {
+        lockedRef.current = true;
+        onNext();
+      }
+    }, 5000);
+
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, [onNext]);
+
+  const handleBack = useCallback(() => {
+    lockedRef.current = true;
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    onBack();
+  }, [onBack]);
 
   const months = [
     "January", "February", "March", "April", "May", "June",
@@ -33,7 +55,7 @@ export default function TopMonthIntroScreen() {
       <div className="min-h-screen flex flex-col px-[24px]">
         {/* Header content */}
         <div className="flex items-center justify-between pt-[22px] pb-[18px]">
-          <button>
+          <button onClick={handleBack}>
             <ArrowLeftIcon color="#FFFFFF" />
           </button>
 
@@ -68,7 +90,7 @@ export default function TopMonthIntroScreen() {
                       ${rowIndex % 2 === 0 ? "animate-scroll-left" : "animate-scroll-right"}`}
                   >
                     {scrollingMonths.map((month, i) => (
-                      <span key={i} className="text-[16px] text-[#FEF1C0]">
+                      <span key={i} className="text-[16px] text-[#FEF1C0] leading-[32px]">
                         {month}
                       </span>
                     ))}
