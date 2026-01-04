@@ -51,7 +51,7 @@ export default function AttendanceTotalScreen({ onNext, onBack }: ScreenProps) {
       image="/images/Black-Background-1.svg"
     >
       {/* Screen content here */}
-      <div className="min-h-screen flex flex-col px-[24px]">
+      <div className="min-h-screen flex flex-col px-[24px] z-10">
         {/* Header content */}
         <div className="flex items-center justify-between pt-[22px] pb-[18px]">
           <button onClick={onBack}>
@@ -82,7 +82,7 @@ export default function AttendanceTotalScreen({ onNext, onBack }: ScreenProps) {
         {/* Footer */}
         <div className="mt-auto flex flex-col gap-[12px] items-center px-[8px] pb-[48px] opacity-80">
           <p>
-            <span className="text-[#FAFAFA] text-[10px]">That&apos;s top tier dedication</span>
+            <span className="text-[#FAFAFA] text-[12px]">That&apos;s top tier dedication</span>
           </p>
           <LogoIcon color="#FAFAFA" />
         </div>

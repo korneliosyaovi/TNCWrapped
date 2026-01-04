@@ -50,7 +50,7 @@ export default function PersonaScreen({ onBack }: ScreenProps) {
       image="/images/Confetti.gif"
     >
       {/* Screen content here */}
-      <div className="min-h-screen flex flex-col px-[24px]">
+      <div className="min-h-screen flex flex-col px-[24px] z-10">
         {/* Header content */}
         <div className="flex items-center justify-between pt-[22px] pb-[18px]">
           <button onClick={onBack}>
@@ -69,7 +69,7 @@ export default function PersonaScreen({ onBack }: ScreenProps) {
           <h3 className="header gradient-text text-border-light">{userData.persona}</h3>
           <p className="text-[#F1F2F6] text-[12px] mt-[16px] leading-[1.5] tracking-[-0.3px]">
             You attended <strong>{userData.totalAttendance || 0} Services</strong>. Your strongest month was <strong>{userData.highestActivityMonth || ""}</strong>.
-            You dominated <strong>Gethsemane, {userData.longestStreak || 0} times</strong>. Every service you attended wasn&apos;t just a check-in. It was a step in your walk with God.
+            Your longest streak was <strong>{userData.longestStreak || 0} times</strong> in 2025. Every service you attended wasn&apos;t just a check-in. It was a step in your walk with God.
           </p>
         </div>
 
