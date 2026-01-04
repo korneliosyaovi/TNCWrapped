@@ -1,40 +1,49 @@
+import Image from "next/image";
+import Background from "../components/ui/Background";
+import { LogoIcon } from "@/assets/LogoIcon";
+
 export default function DesktopBlocker() {
   return (
-    <div className="h-screen w-full bg-linear-to-br from-purple-900 via-black to-blue-900 flex items-center justify-center p-6">
-      <div className="max-w-md text-center">
-        <div className="mb-8">
-          <svg
-            className="w-24 h-24 mx-auto text-purple-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1.5}
-              d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+    <Background
+      color="#FFFAE9"
+    >
+      <div className="h-screen overflow-y-auto">
+        <div className="min-h-screen flex flex-col px-[24px]">
+          <div className="mt-[96px] text-center">
+            <LogoIcon className="mx-auto mb-[32px]" width="48px" height="48px" color="#141414" />
+            <div className="relative inline-block">
+              <h2 className="header-shadow">OOPS!</h2>
+              <h2 className="header gradient-text text-border-dark">OOPS!</h2>
+            </div>
+            <h4 className="text-[#272727] mt-[16px]">It is easier for a Camel...</h4>
+            <p className="w-[345px] mx-auto text-[#272727] mt-[16px] leading-[1.5] tracking-[-0.3px]">
+              ...to pass through the eye of a needle than for a desktop to display this Wrapped.
+            </p>
+          </div>
+
+          <div className="mx-auto w-[320px] h-[392px] mt-[48px] bg-[#fef1c0] border border-[#ffb300] rounded-[20px] px-[40px] py-[40px]">
+            <Image
+              src="/images/qr-signup.png"
+              alt="Mocile app QR code"
+              width={240}
+              height={240}
+              className="mx-auto"
             />
-          </svg>
-        </div>
+            
+            <p className="w-[240px] mx-auto text-[#272727] mt-[24px] leading-[1.5] tracking-[-0.3px]">
+              Scan this to enter by the narrow gate (your phone).
+            </p>
+          </div>
         
-        <h1 className="text-3xl font-bold text-white mb-4">
-          Mobile Only
-        </h1>
-        
-        <p className="text-gray-300 mb-6 leading-relaxed">
-          This experience is designed exclusively for mobile devices.
-          Please open this link on your smartphone to continue.
-        </p>
-        
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-          <p className="text-sm text-gray-400">
-            Open this URL to your mobile device to continue.
-          </p>
+          <div className="mt-[24px] mx-auto flex items-center space-x-[16px] px-[32px] py-[24px] mb-[48px] opacity-80">
+            <p>
+              <span className="text-[#141414] text-[10px]">Powered by .</span>
+            </p>
+            <LogoIcon color="#141414" style={{ height: "24px", width: "auto" }} />
+          </div>
+
         </div>
       </div>
-    </div>
+    </Background>
   );
 }

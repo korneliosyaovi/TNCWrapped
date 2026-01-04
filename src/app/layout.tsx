@@ -4,8 +4,8 @@ import "./globals.css";
 import AppProviders from "../components/providers/AppProviders";
 
 export const metadata: Metadata = {
-  title: "Mobile Flow App",
-  description: "A mobile-only, state-driven experience",
+  title: "The New Wrapped",
+  description: "Rewind 2025 to see God's faithfulness.",
 };
 
 export const viewport: Viewport = {

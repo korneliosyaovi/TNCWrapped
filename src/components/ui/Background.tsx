@@ -19,7 +19,7 @@ export default function Background({
   return (
     <div
       className={clsx(
-        "min-h-screen w-full bg-cover bg-center bg-no-repeat",
+        "min-h-screen w-full bg-cover bg-center bg-no-repeat z-0",
         className
       )}
       style={{
