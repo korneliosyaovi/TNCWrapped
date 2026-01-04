@@ -91,7 +91,7 @@ export default function PersonaScreen({ onBack }: ScreenProps) {
         {/* Footer */}
         <div className="mt-auto mx-auto flex flex-col gap-[12px] items-center px-[8px] pb-[48px] opacity-80">
           <p>
-            <span className="text-[#FAFAFA] text-[12px]">https://wrapped.wearethenew.org/</span>
+            <span className="text-[#FAFAFA] text-[12px]">wrapped.wearethenew.org/</span>
           </p>
           <LogoIcon color="#FAFAFA" />
         </div>
