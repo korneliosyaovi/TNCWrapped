@@ -12,14 +12,14 @@ import { LogoIcon } from "@/assets/LogoIcon";
 import VolumeButton from "@/components/ui/VolumeButton";
 
 export default function OxygenScreen({ onNext, onBack }: ScreenProps) {
-  const { setEventAttendance } = useFlow();
+  const { setEventAttendance, userData } = useFlow();
   const { trackEvent } = useAnalytics();
   const sfx = useSFX();
 
   useEffect(() => {
     trackEvent({
       name: ANALYTICS_EVENTS.SCREEN_VIEWED,
-      params: { screen_name: "oxygen" },
+      params: { screen_name: "oxygen", id: userData.identity},
     });
   }, [trackEvent]);
 
@@ -33,6 +33,7 @@ export default function OxygenScreen({ onNext, onBack }: ScreenProps) {
       params: {
         button_name: attended ? "attended" : "missed",
         screen: "oxygen",
+        id: userData.identity
       },
     });
 

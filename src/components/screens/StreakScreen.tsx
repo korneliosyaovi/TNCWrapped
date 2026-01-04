@@ -18,7 +18,7 @@ export default function StreakScreen({ onNext, onBack }: ScreenProps) {
   useEffect(() => {
     trackEvent({
       name: ANALYTICS_EVENTS.SCREEN_VIEWED,
-      params: { screen_name: "streak" },
+      params: { screen_name: "streak", id: userData.identity },
     });
   }, [trackEvent]);
 
@@ -30,7 +30,8 @@ export default function StreakScreen({ onNext, onBack }: ScreenProps) {
         params: { 
         button_name: "continue", 
         screen: "streak",
-        longest_streak: userData.longestStreak 
+        longest_streak: userData.longestStreak,
+        id: userData.identity 
         },
     });
     onNext();
