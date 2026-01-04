@@ -10,12 +10,12 @@ import { ANALYTICS_EVENTS } from "@/types";
 import Background from "../ui/Background";
 import { MailIcon } from "@/assets/MailIcon";
 import { ArrowDownIcon } from "@/assets/ArrowDownIcon";
+import { LogoIcon } from "@/assets/LogoIcon";
 
 const COUNTRY_CODES = ["+234"];
 
 export default function BeforeWeBeginScreen({ goToScreen }: ScreenProps) {
-  const { validateUser, isLoading, error, setError, userData, fetchUserData } =
-    useFlow();
+  const { validateUser, isLoading, error, setError, userData, fetchUserData } = useFlow();
   const { trackEvent } = useAnalytics();
   const [input, setInput] = useState("");
   const [localError, setLocalError] = useState("");
@@ -143,14 +143,7 @@ export default function BeforeWeBeginScreen({ goToScreen }: ScreenProps) {
     <Background color="#141414">
       <div className="min-h-screen flex flex-col px-[24px]">
         <div className="mt-[48px] mb-[32px] text-center">
-          <Image
-            src="/images/Icon-White.png"
-            alt="Logo"
-            className="mx-auto mb-[16px]"
-            width={1000}
-            height={1000}
-            style={{ height: "32px", width: "auto", maxWidth: "100%" }}
-          />
+          <LogoIcon color="#FFFFFF" className="mx-auto mb-[16px]" style={{ height: "32px", width: "auto" }} />
           <h4 className="mb-[16px] text-[28px]">Before We Begin...</h4>
           <p className="text-[#F1F2F6]">
             Enter your details to see your 2025 with TheNew Church.

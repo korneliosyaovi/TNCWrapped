@@ -11,31 +11,33 @@ import { ArrowLeftIcon } from "@/assets/ArrowLeftIcon";
 import { LogoIcon } from "@/assets/LogoIcon";
 import { VolumeIcon } from "@/assets/VolumeIcon";
 
-export default function FeastShofarScreen({ onNext }: ScreenProps) {
-  const { userData } = useFlow();
+export default function FeastShofarScreen({ onNext, onBack }: ScreenProps) {
+  const { setEventAttendance } = useFlow();
   const { trackEvent } = useAnalytics();
   const sfx = useSFX();
 
   useEffect(() => {
     trackEvent({
       name: ANALYTICS_EVENTS.SCREEN_VIEWED,
-      params: { screen_name: "streak" },
+      params: { screen_name: "feast-shofar" },
     });
   }, [trackEvent]);
 
-  const handleContinue = () => {
+  const handleAnswer = (attended: boolean) => {
     sfx.play("whoosh");
-    
+
+    setEventAttendance("feast", attended);
+
     trackEvent({
-        name: ANALYTICS_EVENTS.BUTTON_CLICKED,
-        params: { 
-        button_name: "continue", 
-        screen: "streak",
-        longest_streak: userData.longestStreak 
-        },
+      name: ANALYTICS_EVENTS.BUTTON_CLICKED,
+      params: {
+        button_name: attended ? "attended" : "missed",
+        screen: "feast-shofar",
+      },
     });
+
     onNext();
-    };
+  };
 
 
   return (
@@ -46,7 +48,7 @@ export default function FeastShofarScreen({ onNext }: ScreenProps) {
       <div className="min-h-screen flex flex-col px-[24px]">
         {/* Header content */}
         <div className="flex items-center justify-between pt-[22px] pb-[18px]">
-          <button>
+          <button onClick={onBack}>
             <ArrowLeftIcon color="#141414" />
           </button>
 
@@ -81,14 +83,14 @@ export default function FeastShofarScreen({ onNext }: ScreenProps) {
         <div className="flex justify-between">
           <button 
             className="self-center mt-[64px] px-[42px] py-[16px] rounded-full bg-[#141414] text-[#FFFFFF]"
-            onClick={handleContinue}
+            onClick={() => handleAnswer(true)}
           >
             Absolutely!
           </button>
 
           <button 
             className="self-center mt-[64px] px-[42px] py-[16px] rounded-full border-2 border-[#141414] text-[#141414]"
-            onClick={handleContinue}
+            onClick={() => handleAnswer(false)}
           >
             I missed it
           </button>
